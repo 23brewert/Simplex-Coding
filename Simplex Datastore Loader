@@ -1,0 +1,14 @@
+local DataStoreService = game:GetService("DataStoreService")
+local CurrencyStore = DataStoreService:GetDataStore("Currency1415")
+
+game.Player.PlayerAdded:Connect(Function(plr)
+Print("Loading Datastore... Key: "..plr.UserId.."")
+
+local success, currentCredit = pcall(function()
+	return CurrencyStore:GetAsync(plr.UserId)
+end)
+ 
+if success then
+	print("Current Credit:", currentCredit)
+end
+end()
